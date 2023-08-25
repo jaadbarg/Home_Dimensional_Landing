@@ -1,0 +1,23 @@
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f4;
+}
+
+.hero-section {
+    background: url('https://source.unsplash.com/720x600?real-estate') no-repeat center center;
+    background-size: cover;
+    height: 600px;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.feature-section {
+    padding: 50px 0;
+}
+
+.feature-item {
+    margin-bottom: 30px;
+}
