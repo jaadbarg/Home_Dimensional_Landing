@@ -7,6 +7,7 @@ import {
   useTheme,
 } from "@mui/material";
 import Features from "./Features";
+import ViewOurWork from "./ViewOurWork";
 
 function Home() {
   const theme = useTheme();
@@ -16,9 +17,8 @@ function Home() {
     <Box
       sx={{
         py: isMobile ? 3 : 5,
-        backgroundImage: `url('https://source.unsplash.com/720x600?real-estate')`,
-        backgroundRepeat: "no-repeat",
-        backgroundSize: "cover",
+        position: "relative",
+        overflow: "hidden",
         minHeight: isMobile ? "auto" : "600px",
         display: "flex",
         flexDirection: "column",
@@ -26,6 +26,27 @@ function Home() {
         alignItems: "center",
       }}
     >
+      <video
+        autoPlay
+        loop
+        muted
+        playbackrate={.33}
+        style={{
+          position: "absolute",
+          width: "100%",
+          left: "50%",
+          top: "50%",
+          height: "100%",
+          objectFit: "cover",
+          transform: "translate(-50%, -50%)",
+          zIndex: "-1",
+        }}
+      >
+        <source
+          src="https://cdn-luma.com/public/lumalabs.ai/flythroughs/14-aug/new%20hero.mp4"
+          type="video/mp4"
+        />
+      </video>
       <Box
         sx={{
           backgroundColor: "rgba(0, 0, 0, 0.5)", // semi-transparent black
@@ -68,6 +89,7 @@ function Home() {
         </Box>
       </Box>
       <Features />
+      <ViewOurWork />
     </Box>
   );
 }

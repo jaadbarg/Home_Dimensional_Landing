@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import {
   Container,
   Typography,
@@ -6,11 +6,35 @@ import {
   CardContent,
   Grid,
   Button,
+  CardMedia,
 } from "@mui/material";
-import { CardMedia } from "@mui/material";
-import { Link } from "react-router-dom"; // <-- Import the Link component
+import { Link } from "react-router-dom";
 
 function LearnMore() {
+  const [imageUrl, setImageUrl] = useState("");
+
+  useEffect(() => {
+    const fetchPexelsImage = async () => {
+      const response = await fetch(
+        "https://api.pexels.com/v1/search?query=real+estate&per_page=10",
+        {
+          headers: {
+            Authorization:
+              "Q6h4ImhwSMqJNL72dchW8ZGduJ8L5clEkgZXy3MdPqc2g6CR9NWTJqMg",
+          },
+        }
+      );
+      const data = await response.json();
+      const randomIndex = Math.floor(Math.random() * data.photos.length);
+
+      if (data.photos && data.photos.length > 0) {
+        setImageUrl(data.photos[randomIndex].src.large);
+      }
+    };
+
+    fetchPexelsImage();
+  }, []);
+
   return (
     <Container component="section" maxWidth="md" sx={{ py: 5 }}>
       <Typography variant="h4" gutterBottom>
@@ -23,12 +47,14 @@ function LearnMore() {
         cutting-edge AI Neural Radiance technology is poised to redefine the
         landscape of 3D scene reconstruction.
       </Typography>
-      <CardMedia
-        component="img"
-        height="240"
-        image="https://img.freepik.com/free-photo/group-diverse-people-having-business-meeting_53876-25060.jpg?w=2000&t=st=1692929277~exp=1692929877~hmac=da6b434fbf13d8d294f1a19212101272f7ae11700501915f783c97a7aecfeb5d"
-        alt="NeRF Technology"
-      />
+      {imageUrl && (
+        <CardMedia
+          component="img"
+          height="240"
+          image={imageUrl}
+          alt="Real Estate from Pexels"
+        />
+      )}
       <Typography variant="h5" gutterBottom sx={{ mt: 4 }}>
         Why Choose Our Services?
       </Typography>
