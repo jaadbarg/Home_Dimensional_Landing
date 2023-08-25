@@ -17,8 +17,8 @@ function Header({ title }) {
             }}
           >
             <img
-              src="/nerf3d.png"
-              alt="NeRF Logo"
+              src="/nerf3dcrop.png"
+              alt="4Dome Logo"
               style={{ width: "50px", marginRight: "15px" }}
             />
             <Typography variant="h6">{title}</Typography>

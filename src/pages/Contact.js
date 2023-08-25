@@ -27,8 +27,8 @@ function Contact() {
       <Typography variant="h5" gutterBottom align="center">
         Get a Quote Today!
       </Typography>
-
-      <form name="contact" method="POST" netlify action="/success">
+{/* //route with react and not with <form */}
+      <form name="contact" method="POST" netlify>
         <TextField
           fullWidth
           id="name"
