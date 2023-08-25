@@ -1,5 +1,6 @@
 import React from "react";
 import { Box, Typography, Button } from "@mui/material";
+import Features from "./Features";
 
 function Home() {
   return (
@@ -16,28 +17,35 @@ function Home() {
         alignItems: "center",
       }}
     >
-      <Typography variant="h3" gutterBottom color="white">
-        NeRF Real Estate
-      </Typography>
-      <Typography variant="h5" gutterBottom color="white">
-        Transforming 2D into 3D
-      </Typography>
-      <Typography variant="body1" paragraph color="white">
-        Experience and share your properties in brand new way utilizing
-        absolutley cutting edge AI technology to create 3d space before your
-        eyes
-      </Typography>
-      <Button
-        variant="contained"
-        color="primary"
-        href="/learnmore"
-        sx={{ mr: 2 }}
+      <Box
+        sx={{
+          backgroundColor: "rgba(0, 0, 0, 0.5)", // semi-transparent black
+          padding: 2,
+          borderRadius: 1,
+          textAlign: "center",
+        }}
       >
-        Learn More
-      </Button>
-      <Button variant="outlined" color="primary" href="/contact">
-        Contact Us
-      </Button>
+        <Typography variant="h3" gutterBottom color="white">
+          Home Dimensional
+        </Typography>
+        <Typography variant="h5" gutterBottom color="white">
+          Transforming 2D images into 3D spaces
+        </Typography>
+        <Typography variant="body1" paragraph color="white">
+          Experience and share your property in a brand new way utilizing
+          cutting edge A.I. shaders technology to create high quality 3d rendered scenes out of photos of your
+          property.
+        </Typography>
+        <Box sx={{ display: "flex", justifyContent: "center", gap: 2 }}>
+          <Button variant="contained" color="primary" href="/learnmore">
+            Learn More
+          </Button>
+          <Button variant="outlined" color="primary" href="/contact">
+            Contact Us
+          </Button>
+        </Box>
+      </Box>
+      <Features />
     </Box>
   );
 }

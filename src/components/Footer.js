@@ -6,7 +6,7 @@ function Footer() {
     <Box sx={{ bgcolor: "background.paper", p: 4, mt: "auto" }}>
       <Container maxWidth="sm">
         <Typography variant="body2" color="textSecondary" align="center">
-          &copy; 2023 NeRF Real Estate. All rights reserved.
+          &copy; 2023 Home Dimensional. All rights reserved.
         </Typography>
       </Container>
     </Box>
