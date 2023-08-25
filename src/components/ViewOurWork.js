@@ -23,9 +23,10 @@ function ViewOurWork() {
 
   return (
     <Box component="section" sx={{ py: 5, textAlign: "center" }}>
-      <Typography variant="h4" gutterBottom>
+      <Typography variant="h4" gutterBottom color="white">
         View Our Work
       </Typography>
+
       <Grid container spacing={4} justifyContent="center">
         {works.map((work, index) => (
           <Grid item xs={12} sm={6} md={4} key={index}>

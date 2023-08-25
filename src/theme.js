@@ -17,7 +17,10 @@ const theme = createTheme({
       primary: "#606F84ff", // paynes-gray
     },
   },
-  // ... You can add more theme configurations like typography, spacing, etc.
+  typography: {
+    fontFamily: '"Roboto", sans-serif',
+  },
+  // ... You can add more theme configurations like spacing, etc.
 });
 
 export default theme;
