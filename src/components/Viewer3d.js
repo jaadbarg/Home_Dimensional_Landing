@@ -1,7 +1,7 @@
 import React, { useRef, useEffect } from "react";
 import * as THREE from "three";
 import { GLTFLoader } from "three/addons/loaders/GLTFLoader";
-import { OrbitControls } from "three/examples/jsm/controls/OrbitControls"; // Import OrbitControls
+import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
 
 function Viewer3D({ modelUrl }) {
   const containerRef = useRef(null);
@@ -10,11 +10,11 @@ function Viewer3D({ modelUrl }) {
     const currentContainer = containerRef.current;
 
     const scene = new THREE.Scene();
-    scene.background = new THREE.Color(0xeeeeee);
+    scene.background = new THREE.Color(0x333333); // Dark background
 
     const camera = new THREE.PerspectiveCamera(
       75,
-      currentContainer.clientWidth / (currentContainer.clientHeight * 0.6),
+      currentContainer.clientWidth / currentContainer.clientHeight,
       0.1,
       1000
     );
@@ -27,12 +27,14 @@ function Viewer3D({ modelUrl }) {
     );
     currentContainer.appendChild(renderer.domElement);
 
-    // Initialize OrbitControls
     const controls = new OrbitControls(camera, renderer.domElement);
-    controls.enableDamping = true; // Enables smooth damping (inertia) for rotation
+    controls.enableDamping = true;
     controls.dampingFactor = 0.25;
-    controls.enableZoom = true; // Enable zooming
-    controls.zoomSpeed = 1.5; // Adjust zoom speed
+    controls.enableZoom = true;
+    controls.zoomSpeed = 1.5;
+
+    const ambientLight = new THREE.AmbientLight(0x888888);
+    scene.add(ambientLight);
 
     const directionalLight = new THREE.DirectionalLight(0xffffff, 0.5);
     directionalLight.position.set(0, 1, 1);
@@ -45,27 +47,19 @@ function Viewer3D({ modelUrl }) {
       modelUrl,
       (gltf) => {
         mesh = gltf.scene;
-        mesh.scale.set(7, 7, 7); // Scaling the model to make it twice as large
-        mesh.position.set(0, 0, 0); // Centering the model
+        mesh.scale.set(4, 4, 4);
+        mesh.position.set(0, 0, 0);
         scene.add(mesh);
       },
-      undefined, // onProgress callback not needed
+      undefined,
       (error) => {
         console.error("An error occurred while loading the GLTF model:", error);
-        console.error("Server response:", error.target.response);
       }
     );
 
     const animate = () => {
       requestAnimationFrame(animate);
-
-      controls.update(); // Update the controls on each frame
-
-      if (mesh) {
-        mesh.rotation.x += 0.005;
-        mesh.rotation.y += 0.005;
-      }
-
+      controls.update();
       renderer.render(scene, camera);
     };
 

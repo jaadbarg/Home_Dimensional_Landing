@@ -30,7 +30,8 @@ function Home() {
         autoPlay
         loop
         muted
-        playbackrate={.33}
+        playsInline // Added this attribute
+        playbackRate={0.33}
         style={{
           position: "absolute",
           width: "100%",
@@ -46,6 +47,7 @@ function Home() {
           src="https://cdn-luma.com/public/lumalabs.ai/flythroughs/14-aug/new%20hero.mp4"
           type="video/mp4"
         />
+        Your browser does not support the video tag. // Fallback message
       </video>
       <Box
         sx={{

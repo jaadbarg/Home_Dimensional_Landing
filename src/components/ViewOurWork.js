@@ -1,7 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import Viewer3D from "./Viewer3d"; // Ensure you've imported Viewer3D
-
+import Viewer3D from "./Viewer3d";
 import {
   Box,
   Typography,
@@ -9,17 +8,22 @@ import {
   CardContent,
   Button,
   Grid,
+  useMediaQuery,
+  useTheme,
 } from "@mui/material";
 
 function ViewOurWork() {
   const works = [
     {
-      modelUrl: "/example3d.glb", // This references the model from the root
+      modelUrl: "/example3d.glb",
       title: "Modern Apartment",
       description: "3D visualization of a modern apartment in downtown.",
     },
     // ... Add more works as needed
   ];
+
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
 
   return (
     <Box component="section" sx={{ py: 5, textAlign: "center" }}>
@@ -29,30 +33,17 @@ function ViewOurWork() {
 
       <Grid container spacing={4} justifyContent="center">
         {works.map((work, index) => (
-          <Grid item xs={12} sm={6} md={4} key={index}>
+          <Grid item xs={12} sm={8} md={6} key={index}>
             <Card
-              sx={{ height: "100%", display: "flex", flexDirection: "column" }}
+              sx={{
+                display: "flex",
+                flexDirection: isMobile ? "column" : "row",
+              }}
             >
-              <Box
-                sx={{
-                  width: "100%",
-                  paddingBottom: "60%",
-                  position: "relative",
-                }}
-              >
-                <div
-                  style={{
-                    position: "absolute",
-                    top: 0,
-                    left: 0,
-                    right: 0,
-                    bottom: 0,
-                  }}
-                >
-                  <Viewer3D modelUrl={work.modelUrl} />
-                </div>
+              <Box sx={{ flex: 2, position: "relative" }}>
+                <Viewer3D modelUrl={work.modelUrl} />
               </Box>
-              <CardContent sx={{ flexGrow: 1 }}>
+              <CardContent sx={{ flex: 1, padding: 2 }}>
                 <Typography variant="h6" gutterBottom>
                   {work.title}
                 </Typography>
