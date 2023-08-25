@@ -1,24 +1,8 @@
 // Contact.js
-import React, { useState } from "react";
-import {
-  Container,
-  TextField,
-  Button,
-  Box,
-  Typography,
-  Snackbar,
-} from "@mui/material";
-import Alert from "@mui/material/Alert";
+import React from "react";
+import { Container, TextField, Button, Box, Typography } from "@mui/material";
 
 function Contact() {
-  const [open, setOpen] = useState(false);
-  const [alertType, setAlertType] = useState("success");
-  const [alertMessage, setAlertMessage] = useState("");
-
-  const handleClose = () => {
-    setOpen(false);
-  };
-
   return (
     <Container component="section" maxWidth="md" sx={{ py: 5 }}>
       <Typography variant="h4" gutterBottom align="center">
@@ -98,15 +82,6 @@ function Contact() {
       <Typography variant="body2" align="center" sx={{ mt: 3 }}>
         Our team is ready to assist you. Reach out today!
       </Typography>
-      <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
-        <Alert
-          onClose={handleClose}
-          severity={alertType}
-          sx={{ width: "100%" }}
-        >
-          {alertMessage}
-        </Alert>
-      </Snackbar>
     </Container>
   );
 }
