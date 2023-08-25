@@ -34,20 +34,29 @@ function ViewOurWork() {
       <Grid container spacing={4} justifyContent="center">
         {works.map((work, index) => (
           <Grid item xs={12} sm={8} md={6} key={index}>
-            <Card
-              sx={{
-                display: "flex",
-                flexDirection: isMobile ? "column" : "row",
-              }}
-            >
-              <Box sx={{ flex: 2, position: "relative" }}>
+            <Card sx={{ display: "flex", flexDirection: "column" }}>
+              <Box
+                sx={{
+                  width: "100%",
+                  position: "relative",
+                  paddingBottom: "56.25%",
+                }}
+              >
                 <Viewer3D modelUrl={work.modelUrl} />
               </Box>
-              <CardContent sx={{ flex: 1, padding: 2 }}>
-                <Typography variant="h6" gutterBottom>
+              <CardContent sx={{ padding: 2 }}>
+                <Typography
+                  variant="h6"
+                  gutterBottom
+                  sx={{ fontSize: isMobile ? "1rem" : "1.2rem" }}
+                >
                   {work.title}
                 </Typography>
-                <Typography variant="body2" color="textSecondary">
+                <Typography
+                  variant="body2"
+                  color="textSecondary"
+                  sx={{ fontSize: isMobile ? "0.8rem" : "1rem" }}
+                >
                   {work.description}
                 </Typography>
               </CardContent>

@@ -47,7 +47,7 @@ function Viewer3D({ modelUrl }) {
       modelUrl,
       (gltf) => {
         mesh = gltf.scene;
-        mesh.scale.set(4, 4, 4);
+        mesh.scale.set(5, 5, 5); // Adjusted scaling
         mesh.position.set(0, 0, 0);
         scene.add(mesh);
       },
