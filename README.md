@@ -1,6 +1,6 @@
 # Home Dimensional
 
-![Home Dimensional Logo](./nerf3d.png)
+![Home Dimensional Logo](./public//nerf3d.png)
 
 Home Dimensional leverages the power of AI Neural Radiance Fields (NeRF) to transform 2D images into immersive 3D scenes for the real estate industry.
 
