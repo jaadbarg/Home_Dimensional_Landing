@@ -31,7 +31,7 @@ function Home() {
         loop
         muted
         playsInline // Added this attribute
-        playbackRate={0.33}
+        // playbackRate={0.33}
         style={{
           position: "absolute",
           width: "100%",
