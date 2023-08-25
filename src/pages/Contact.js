@@ -1,3 +1,4 @@
+// Contact.js
 import React, { useState } from "react";
 import {
   Container,
@@ -10,37 +11,9 @@ import {
 import Alert from "@mui/material/Alert";
 
 function Contact() {
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    message: "",
-  });
   const [open, setOpen] = useState(false);
   const [alertType, setAlertType] = useState("success");
   const [alertMessage, setAlertMessage] = useState("");
-
-  const handleChange = (event) => {
-    const { id, value } = event.target;
-    setFormData((prevState) => ({
-      ...prevState,
-      [id]: value,
-    }));
-  };
-
-  const handleSubmit = (event) => {
-    event.preventDefault();
-
-    // Basic validation
-    if (!formData.name || !formData.email || !formData.message) {
-      setAlertType("error");
-      setAlertMessage("Please fill in all fields.");
-      setOpen(true);
-      return;
-    }
-
-    // The form submission is now handled by Netlify.
-    // The success message will be shown after the form is successfully submitted.
-  };
 
   const handleClose = () => {
     setOpen(false);
@@ -76,12 +49,14 @@ function Contact() {
         noValidate
         autoComplete="off"
         spacing={3}
-        onSubmit={handleSubmit}
         name="contact"
         method="POST"
         data-netlify="true"
+        action="/success" // Redirect to the success page after submission
       >
         <input type="hidden" name="form-name" value="contact" />
+        <input name="bot-field" style={{ display: "none" }} />{" "}
+        {/* netlify-honeypot field */}
         <TextField
           fullWidth
           id="name"
@@ -90,8 +65,6 @@ function Contact() {
           placeholder="John Doe"
           margin="normal"
           variant="outlined"
-          value={formData.name}
-          onChange={handleChange}
         />
         <TextField
           fullWidth
@@ -101,8 +74,6 @@ function Contact() {
           placeholder="john.doe@realestate.com"
           margin="normal"
           variant="outlined"
-          value={formData.email}
-          onChange={handleChange}
         />
         <TextField
           fullWidth
@@ -114,8 +85,6 @@ function Contact() {
           rows={5}
           margin="normal"
           variant="outlined"
-          value={formData.message}
-          onChange={handleChange}
         />
         <Button
           type="submit"

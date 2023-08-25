@@ -6,8 +6,9 @@ import Footer from "./components/Footer";
 import Contact from "./pages/Contact";
 import LearnMore from "./pages/LearnMore";
 import Home from "./components/Home";
+import Success from "./pages/Success"; // Make sure to import the Success component
 
-import theme from "./theme"; // or wherever your theme is located
+import theme from "./theme";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/learnmore" element={<LearnMore />} />
+          <Route path="/success" element={<Success />} />{" "}
         </Routes>
         <Footer />
       </Router>
