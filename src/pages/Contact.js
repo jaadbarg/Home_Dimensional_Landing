@@ -28,17 +28,7 @@ function Contact() {
         Get a Quote Today!
       </Typography>
 
-      <Box
-        component="form"
-        noValidate
-        autoComplete="off"
-        spacing={3}
-        name="contact"
-        method="POST"
-        data-netlify="true"
-      >
-        <input type="hidden" name="form-name" value="contact" />
-        <input name="bot-field" style={{ display: "none" }} />
+      <form name="contact" method="POST" netlify action="/success">
         <TextField
           fullWidth
           id="name"
@@ -76,7 +66,7 @@ function Contact() {
         >
           Request Quote
         </Button>
-      </Box>
+      </form>
       <Typography variant="body2" align="center" sx={{ mt: 3 }}>
         Our team is ready to assist you. Reach out today!
       </Typography>
