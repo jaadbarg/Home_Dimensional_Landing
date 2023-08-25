@@ -1,6 +1,6 @@
 // Contact.js
 import React from "react";
-import { Container, TextField, Button, Box, Typography } from "@mui/material";
+import { Container, TextField, Button, Typography, Box } from "@mui/material";
 
 function Contact() {
   return (
@@ -14,7 +14,7 @@ function Contact() {
 
       <Box sx={{ mt: 4, mb: 2 }}>
         <Typography variant="body1" gutterBottom>
-          🌟 Transform 2D images into interactive 3D scenes.
+          🌟 Take bland 2D images and create beautiful lively 3D scenes.
         </Typography>
         <Typography variant="body1" gutterBottom>
           🌟 Stand out in the market with cutting-edge technology.
@@ -28,7 +28,7 @@ function Contact() {
         Get a Quote Today!
       </Typography>
 
-      <form name="contact" method="POST" netlify action="/success">
+      <form name="contact" method="POST" data-netlify="true" action="/success">
         <TextField
           fullWidth
           id="name"
