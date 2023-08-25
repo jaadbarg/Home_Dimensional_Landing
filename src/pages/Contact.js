@@ -28,7 +28,7 @@ function Contact() {
         Get a Quote Today!
       </Typography>
 
-      <form name="contact" method="POST" data-netlify="true" action="/success">
+      <form name="contact" method="POST" netlify action="/success">
         <TextField
           fullWidth
           id="name"
