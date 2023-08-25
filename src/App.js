@@ -1,26 +1,20 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import { ThemeProvider, CssBaseline, Button } from "@mui/material";
-import { createTheme } from "@mui/material/styles";
+import { ThemeProvider, CssBaseline } from "@mui/material";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import Contact from "./pages/Contact";
 import LearnMore from "./pages/LearnMore";
+import Home from "./components/Home";
 
-const theme = createTheme({
-  palette: {
-    primary: {
-      main: "#1976d2", // This is the default Material-UI primary color. Change as needed.
-    },
-  },
-});
+import theme from "./theme"; // or wherever your theme is located
 
 function App() {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
       <Router>
-        <Header title="NeRF Real Estate" />
+        <Header title="Reality Realty" />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/contact" element={<Contact />} />
