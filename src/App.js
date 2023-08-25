@@ -15,7 +15,7 @@ function App() {
     <ThemeProvider theme={theme}>
       <CssBaseline />
       <Router>
-        <Header title="Home Dimensional" />
+        <Header title="4Dome Real Estate Imaging" />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/contact" element={<Contact />} />

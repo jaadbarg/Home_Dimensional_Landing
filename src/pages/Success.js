@@ -16,7 +16,7 @@ function Success() {
         Success!
       </Typography>
       <Typography variant="h6" gutterBottom align="center">
-        Thank you for reaching out to Home Dimensional.
+        Thank you for reaching out to 4Dome Real Estate Imaging.
       </Typography>
       <Typography variant="body1" gutterBottom align="center">
         We appreciate your interest in revolutionizing the real estate
