@@ -36,11 +36,9 @@ function Contact() {
         name="contact"
         method="POST"
         data-netlify="true"
-        action="/success" // Redirect to the success page after submission
       >
         <input type="hidden" name="form-name" value="contact" />
-        <input name="bot-field" style={{ display: "none" }} />{" "}
-        {/* netlify-honeypot field */}
+        <input name="bot-field" style={{ display: "none" }} />
         <TextField
           fullWidth
           id="name"
