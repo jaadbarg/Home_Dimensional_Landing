@@ -32,8 +32,24 @@ function ViewOurWork() {
             <Card
               sx={{ height: "100%", display: "flex", flexDirection: "column" }}
             >
-              <Box sx={{ width: "100%", height: "400px", marginBottom: 2 }}>
-                <Viewer3D modelUrl={work.modelUrl} />
+              <Box
+                sx={{
+                  width: "100%",
+                  paddingBottom: "60%",
+                  position: "relative",
+                }}
+              >
+                <div
+                  style={{
+                    position: "absolute",
+                    top: 0,
+                    left: 0,
+                    right: 0,
+                    bottom: 0,
+                  }}
+                >
+                  <Viewer3D modelUrl={work.modelUrl} />
+                </div>
               </Box>
               <CardContent sx={{ flexGrow: 1 }}>
                 <Typography variant="h6" gutterBottom>

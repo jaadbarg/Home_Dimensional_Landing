@@ -1,6 +1,7 @@
 import React, { useRef, useEffect } from "react";
 import * as THREE from "three";
 import { GLTFLoader } from "three/addons/loaders/GLTFLoader";
+import { OrbitControls } from "three/examples/jsm/controls/OrbitControls"; // Import OrbitControls
 
 function Viewer3D({ modelUrl }) {
   const containerRef = useRef(null);
@@ -9,24 +10,30 @@ function Viewer3D({ modelUrl }) {
     const currentContainer = containerRef.current;
 
     const scene = new THREE.Scene();
-    scene.background = new THREE.Color(0xeeeeee); // Setting a light gray background
+    scene.background = new THREE.Color(0xeeeeee);
 
     const camera = new THREE.PerspectiveCamera(
       75,
-      currentContainer.clientWidth / currentContainer.clientHeight, // Adjusting the aspect ratio to match the container
+      currentContainer.clientWidth / (currentContainer.clientHeight * 0.6),
       0.1,
       1000
     );
-    camera.position.z = 15; // Adjusting the camera's position further back
+    camera.position.z = 18;
 
     const renderer = new THREE.WebGLRenderer({ antialias: true });
     renderer.setSize(
       currentContainer.clientWidth,
       currentContainer.clientHeight
-    ); // Setting the renderer size to match the container
+    );
     currentContainer.appendChild(renderer.domElement);
 
-    // Add lighting to the scene
+    // Initialize OrbitControls
+    const controls = new OrbitControls(camera, renderer.domElement);
+    controls.enableDamping = true; // Enables smooth damping (inertia) for rotation
+    controls.dampingFactor = 0.25;
+    controls.enableZoom = true; // Enable zooming
+    controls.zoomSpeed = 1.5; // Adjust zoom speed
+
     const directionalLight = new THREE.DirectionalLight(0xffffff, 0.5);
     directionalLight.position.set(0, 1, 1);
     scene.add(directionalLight);
@@ -38,7 +45,7 @@ function Viewer3D({ modelUrl }) {
       modelUrl,
       (gltf) => {
         mesh = gltf.scene;
-        mesh.scale.set(2, 2, 2); // Scaling the model to make it larger
+        mesh.scale.set(7, 7, 7); // Scaling the model to make it twice as large
         mesh.position.set(0, 0, 0); // Centering the model
         scene.add(mesh);
       },
@@ -51,6 +58,8 @@ function Viewer3D({ modelUrl }) {
 
     const animate = () => {
       requestAnimationFrame(animate);
+
+      controls.update(); // Update the controls on each frame
 
       if (mesh) {
         mesh.rotation.x += 0.005;
@@ -67,7 +76,7 @@ function Viewer3D({ modelUrl }) {
     };
   }, [modelUrl]);
 
-  return <div ref={containerRef} style={{ width: "100%", height: "600px" }} />; // Increasing the height of the viewer
+  return <div ref={containerRef} style={{ width: "100%", height: "500px" }} />;
 }
 
 export default Viewer3D;
